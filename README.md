@@ -124,37 +124,101 @@ Q(t+1)=T′Q(t)+TQ(t)′
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
 Developed by: MOHAMED ATHIL B
-
 RegisterNumber:  212222230081
 */
 ```
+### SR Flipflop : 
 ```
-module exp05(J,K,clk,Q,Qbar);
-input J,K,clk;
+module flipflop(s,r,Q,Qbar,clk);
+input s,r,clk;
 output reg Q,Qbar;
 initial Q=0;
 initial Qbar=1;
 always @(posedge clk)
 begin
-Q=(J&~Q)|(Q&(~K));
-Qbar=((~J)&(Qbar))|K&(~Qbar);
+Q=s|(Q&(~r));
+Qbar=r|(Qbar&(~s));
+end
+endmodule
+```
+### JK Flipflop :
+```
+module jkflipflop(j,k,clk,q,qbar);
+input j,k,clk;
+output reg q;
+output reg qbar;
+initial q=0;
+initial qbar=1;
+always @(posedge clk)
+begin
+q=(j&(~q))|((~k)&q);
+qbar=((~j)&q)|(k &(~q));
+end 
+endmodule
+```
+### D Flipflop :
+```
+module EXDflipflop(D,clk,Q,Qbar);
+input D,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=D;
+Qbar=~D;
+end
+endmodule
+```
+### T Flipflop :
+```
+module t(T,clk,q,qbar);
+input T,clk;
+output reg q;
+output reg qbar;
+initial q=0;
+initial qbar=1;
+always @ (posedge clk)
+begin
+q=(T&(~q))|((~T)&q);
+qbar=(~q);
 end
 endmodule
 ```
 
-
 ## RTL LOGIC FOR FLIPFLOPS 
+### SR Flipflop : 
+![274984003-a05a5ea4-1e41-4116-a769-4fb705fb555e](https://github.com/Bmohamedathil/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119560261/b982f6b4-2143-4939-9c17-56ab2e043c0d)
 
-![image](https://github.com/sanjaythiyagarajan/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119409242/912b4115-fc2a-4ae5-a98a-20279aa15191)
+### JK Flipflop :
+![274984144-b583bd53-c7ec-486b-9c1f-9475821b2462](https://github.com/Bmohamedathil/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119560261/33563477-b559-45eb-b19b-330038629ba6)
 
-## Waveform Output
+### D Flipflop :
+![274984303-e3778472-cc7d-4a15-9f02-767f5b6b971c](https://github.com/Bmohamedathil/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119560261/f30e679a-8ef2-4c93-b70a-d16a3447339e)
 
-![image](https://github.com/sanjaythiyagarajan/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119409242/cb1e0de7-8381-4dc2-9395-a8713cb132ee)
+### T Flipflop :
+![278822781-addc0b3d-274c-4862-a0f8-489f3f019599](https://github.com/Bmohamedathil/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119560261/2f39026a-8936-4aff-916a-2edfdf2c5db4)
 
-## Truth table
 
-![image](https://github.com/sanjaythiyagarajan/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119409242/04f47449-2c38-460e-b749-830d53961157)
+
+## WAVEFORM OUTPUT :
+### SR Flipflop :
+![274984691-302be0bd-c805-4230-91ff-cfc3ca62a71b](https://github.com/Bmohamedathil/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119560261/ec5a6e69-0da5-4edd-ac52-1178e3e44506)
+
+### JK Flipflop :
+![274984901-00ec9100-2197-4031-b1ff-1103d1057eb0](https://github.com/Bmohamedathil/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119560261/f9688672-6b19-4b5f-b783-894448c978ca)
+
+### D Flipflop :
+![274985043-d1c8b7d6-4d9a-4beb-88be-f6d1bba18c86](https://github.com/Bmohamedathil/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119560261/82e9c720-ca5a-4209-811e-47f2a283c659)
+
+### T Flipflop :
+![278822798-ac1b9798-ecca-4aa0-a0e3-c793294a89ae](https://github.com/Bmohamedathil/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119560261/845e96b7-49c2-4937-be89-44ec2f5711b0)
+
+
+
+
 
 ## RESULTS 
 
-Thus the flipflops circuits are designed and the truth tables is verified using quartus software.
+All the flipflops are implemented using verilog and their functionality has been validated using their functional tables.
